@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Активация аккаунта {% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row" style="padding: 100px;">
+        <h1>Ваш аккаунт успешно активирован</h1>
+        <p>Для того, чтобы войти в свой акккаунт, пройдите по <a href="{% url 'login' %}">ссылке</a></p>
+    </div>
+</div>
+{% endblock %}
