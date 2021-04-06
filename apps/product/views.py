@@ -15,7 +15,6 @@ class IndexPage(ListView):
     model = Product
     template_name = 'product/index.html'
 
-
     def get_template_names(self):
         template_name = super(IndexPage, self).get_template_names()
         search = self.request.GET.get('search')
@@ -30,6 +29,7 @@ class IndexPage(ListView):
             context['products'] = Product.objects.filter(Q(title__icontains=search) | Q(description__icontains=search))
         return context
 
+
 class CategoryDetailView(DetailView):
     model = Category
     template_name = 'product/category_detail.html'
@@ -42,7 +42,7 @@ class CategoryDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categoryproducts'] = Product.objects.filter(category=self.slug)
+        context['category_products'] = Product.objects.filter(category=self.slug)
         return context
 
 
@@ -108,7 +108,7 @@ class ProductDeleteView(SuperUserCheckMixin, DeleteView):
         self.object = self.get_object()
         success_url = self.get_success_url()
         self.object.delete()
-        messages.add_message(request, messages.SUCCESS, 'Продукт успешно удалено!')
+        messages.add_message(request, messages.SUCCESS, 'Продукт успешно удален!')
         return HttpResponseRedirect(success_url)
 
 

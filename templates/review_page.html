@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ product.title }}{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <h1 style="text-align: center; padding-top: 20px; color: #e7ab3c;">Все отзывы</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="padding: 35px">
+    {% for review in all_reviews %}
+      <div class="col" style="padding: 10px">
+        <div class="card">
+          <img src="{{ review.product.image.url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ review.user.name }}</h5>
+            <p class="card-text">{{ review.body }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

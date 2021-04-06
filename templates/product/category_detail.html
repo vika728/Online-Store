@@ -1,0 +1,14 @@
+{%  extends 'base.html'%}
+{% load static %}
+{% block title%}Категории{% endblock %}
+
+
+
+{% block content %}
+{% for product in category_products %}
+<h2>{{ product.title }}</h2>
+{% endfor %}
+
+
+
+{% endblock %}

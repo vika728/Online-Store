@@ -5,6 +5,7 @@ from django.db import models
 
 User = get_user_model()
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя категории', unique=True)
     slug = models.SlugField(primary_key=True)
